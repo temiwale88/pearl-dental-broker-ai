@@ -35,7 +35,7 @@ def load_data(file_name="plan_df.csv"):
     url="https://drive.google.com/uc?id=1Jwdb-rr8JAdEmNu0uf_uDuup03rBgv1m"
     output = "gdrive_plan_df.csv"
     gdown.download(url, output, quiet=False)
-    data = pd.read_csv(output,error_bad_lines=False)
+    data = pd.read_csv(output)
     return data
 
 plan_df = load_data()
