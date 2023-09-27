@@ -41,7 +41,7 @@ def load_data(file_name="plan_df.csv"):
         output_file_name = "gdrive_plan_df.csv"
         gdown.download(url, output_file_name, quiet=False)
         data = pd.read_csv(output_file_name)
-    # else:
+    else:
         # !pip install py7zr #for streamlit
         from py7zr import unpack_7zarchive
         import shutil
