@@ -21,8 +21,10 @@ images_path = (dir_path / "images").resolve()
 temp_path = (dir_path / "temp").resolve()
 env_path = (dir_path / ".env").resolve()
 
-
-OPENAI_KEY = os.environ.get("OPENAI_API_KEY")
+try:
+    OPENAI_KEY = os.environ.get("OPENAI_API_KEY")
+else:
+    OPENAI_KEY = st.secrets['OPENAI_API_KEY']
     
 @st.cache_resource(show_spinner=False)
 def init_openai():
