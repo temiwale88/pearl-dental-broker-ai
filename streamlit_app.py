@@ -23,7 +23,7 @@ env_path = (dir_path / ".env").resolve()
 
 try:
     OPENAI_KEY = os.environ.get("OPENAI_API_KEY")
-else:
+except:
     OPENAI_KEY = st.secrets['OPENAI_API_KEY']
     
 @st.cache_resource(show_spinner=False)
