@@ -2,3 +2,5 @@ streamlit
 openai
 python-dotenv
 gdown
+pyunpack
+patool
