@@ -11,11 +11,11 @@ import numpy as np
 import pandas as pd
 import glob
 import re
+import gdown
+import requests
+from io import StringIO
 
 dir_path = Path.cwd()
-data_path = (dir_path / "data").resolve()
-images_path = (dir_path / "images").resolve()
-temp_path = (dir_path / "temp").resolve()
 env_path = (dir_path / ".env").resolve()
 load_dotenv(env_path)
 
@@ -29,11 +29,17 @@ def init_openai():
 
 @st.cache_resource(show_spinner=False)
 def load_data(file_name="plan_df.csv"):
-    data = pd.read_csv(file_name)
     
+    # data = pd.read_csv(file_name)
+    output_file = 'gdrive_plan_df.csv'
+    url="https://drive.google.com/uc?id=1Jwdb-rr8JAdEmNu0uf_uDuup03rBgv1m"
+    output = "gdrive_plan_df.csv"
+    gdown.download(url, output, quiet=False)
+    data = pd.read_csv(output,error_bad_lines=False)
     return data
 
 plan_df = load_data()
+print(plan_df)
 
 @st.cache_resource(show_spinner=False)
 def load_md_files(file_name="plan_df.csv"):
