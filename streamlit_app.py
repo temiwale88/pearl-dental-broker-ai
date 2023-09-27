@@ -630,6 +630,41 @@ st.sidebar.write(f"""
     ### App info
 
     **App name**: *Pearl - Your Dental Plan Assistant*
+    
+    **How to use**: Adopt any of the personas below and interact with the conversational AI bot as though you're seeking for a dental plan. 
+    
+        **Personas** (created by ChatGPT)
+        1. **Young Professional:** A single young adult, perhaps just out of college and starting their career. 
+        They may not have access to dental coverage through their employer and are looking for an affordable standalone dental plan to maintain their oral health.
+
+        2. **Retired Senior:** A retiree who is no longer covered by an employer's dental plan and is looking for comprehensive dental coverage 
+        to address the potential dental issues that can arise with age, such as dentures, crowns, or gum disease treatment.
+
+        3. **Small Business Owner:** A self-employed individual or owner of a small business who is shopping for dental coverage for themselves 
+        and potentially their employees. They may be interested in finding group dental plans that provide benefits for their business and personal needs.
+
+        4. **Parents of Young Children:** A family with young children who want to ensure their kids have access to dental care. 
+        They may prioritize coverage for preventive care, orthodontics, and pediatric dental services.
+
+        5. **Pre-Retirement Planner:** An individual in their 50s who is planning for retirement and wants to secure dental coverage for their post-retirement years. 
+        They may be looking for plans that cover major dental procedures.
+
+        6. **Recent Graduate:** A recent college graduate who has aged out of their parents' dental insurance plan and is seeking an individual plan 
+        to cover their oral healthcare needs as they start their career.
+
+        7. **Low-Income Individual:** Someone with limited financial resources who is looking for a basic dental plan that fits within their budget. 
+        They may prioritize plans with low premiums and may be eligible for subsidies or assistance.
+
+        8. **Individual with Dental Issues:** Someone who has specific dental issues or conditions, such as gum disease or missing teeth, 
+        and is seeking a dental plan that provides coverage for specialized treatments or procedures.
+
+        9. **Frequent Traveler:** A person whose work or lifestyle involves frequent travel and is looking for a dental plan with a broad network 
+        of dentists to ensure they can receive care wherever they go.
+
+        10. **Cost-Conscious Shopper:** An individual who is focused on finding the most cost-effective dental plan that offers adequate coverage for their needs, 
+        and is willing to compare plans and premiums to save money.
+
+        These personas reflect a range of individuals with varying life stages, needs, and priorities when shopping for standalone dental plans on the Healthcare.gov federal insurance marketplace. The choice of a dental plan may greatly depend on their unique circumstances and preferences.
 
     **App details**: The application uses stand-alone dental plan (SADP) data from the federal exchange accessible through [Healthcare.gov](https://www.healthcare.gov/dental-plan-information-2023/). The AI chatbot is named '**Pearl**' (get it?). The bot is given access any of the 200+ unique plans in this dataset. It can surface matching plans, recommend the best plans based on customer needs, simplify insurance terms, etc.
     
