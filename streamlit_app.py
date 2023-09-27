@@ -679,6 +679,6 @@ st.sidebar.write(f"""
 
     **How do I make something like this?**
 
-    Contact the Delta Dental of Washington (DDWA) IT/BI Data Science team via email [Elijah Adeoye](mailto:eadeoye@deltadentalwa.com)!
-    or [LinkedIn](https://www.linkedin.com/in/elijahaadeoye/)
+    Contact the Delta Dental of Washington (DDWA) IT/BI Data Science team via email [Elijah Adeoye](mailto:eadeoye@deltadentalwa.com)
+    or [LinkedIn](https://www.linkedin.com/in/elijahaadeoye/)!
     """)
