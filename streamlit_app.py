@@ -43,7 +43,7 @@ def load_data(file_name="plan_df.csv"):
         # !pip install pyunpack patool #for streamlit
         from pyunpack import Archive
         Archive('plan_df.7z').extractall(".")
-        data = pd.read_csv(output_file_name)
+        data = pd.read_csv(file_name)
     return data
 
 plan_df = load_data()
