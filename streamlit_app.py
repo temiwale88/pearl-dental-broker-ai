@@ -40,9 +40,12 @@ def load_data(file_name="plan_df.csv"):
         gdown.download(url, output_file_name, quiet=False)
         data = pd.read_csv(output_file_name)
     # else:
-        # !pip install pyunpack patool #for streamlit
-        from pyunpack import Archive
-        Archive('plan_df.7z').extractall(".")
+        # !pip install py7zr #for streamlit
+        from py7zr import unpack_7zarchive
+        import shutil
+        
+        shutil.register_unpack_format('7zip', ['.7z'], unpack_7zarchive)
+        shutil.unpack_archive('plan_df.7z', '.')
         data = pd.read_csv(file_name)
     return data
 
@@ -55,9 +58,13 @@ def load_md_files(file_name="plan_df.csv"):
         md_files = glob.glob((directory_path + '/*.md'))
         md_files = [file.split("\\data\\")[1].split(".md")[0] for file in md_files]
     except:
-        # !pip install pyunpack patool #for streamlit
-        from pyunpack import Archive
-        Archive('pearl_ai_broker_mds.7z').extractall(".")
+        # !pip install py7zr #for streamlit
+        from py7zr import unpack_7zarchive
+        import shutil
+        
+        shutil.register_unpack_format('7zip', ['.7z'], unpack_7zarchive)
+        shutil.unpack_archive('pearl_ai_broker_mds.7z', '.')
+        
         directory_path = str(data_path)
         md_files = glob.glob((directory_path + '/*.md'))
         md_files = [file.split("\\data\\")[1].split(".md")[0] for file in md_files]
