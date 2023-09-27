@@ -16,8 +16,10 @@ import requests
 from io import StringIO
 
 dir_path = Path.cwd()
+data_path = (dir_path / "data").resolve()
+images_path = (dir_path / "images").resolve()
+temp_path = (dir_path / "temp").resolve()
 env_path = (dir_path / ".env").resolve()
-load_dotenv(env_path)
 
 
 OPENAI_KEY = os.environ.get("OPENAI_API_KEY")
@@ -30,23 +32,35 @@ def init_openai():
 @st.cache_resource(show_spinner=False)
 def load_data(file_name="plan_df.csv"):
     
-    # data = pd.read_csv(file_name)
-    output_file = 'gdrive_plan_df.csv'
-    url="https://drive.google.com/uc?id=1Jwdb-rr8JAdEmNu0uf_uDuup03rBgv1m"
-    output = "gdrive_plan_df.csv"
-    gdown.download(url, output, quiet=False)
-    data = pd.read_csv(output)
+    try:
+        data = pd.read_csv(file_name)
+    except:
+        url="https://drive.google.com/uc?id=1Jwdb-rr8JAdEmNu0uf_uDuup03rBgv1m"
+        output_file_name = "gdrive_plan_df.csv"
+        gdown.download(url, output_file_name, quiet=False)
+        data = pd.read_csv(output_file_name)
+    # else:
+        # !pip install pyunpack patool #for streamlit
+        from pyunpack import Archive
+        Archive('plan_df.7z').extractall(".")
+        data = pd.read_csv(output_file_name)
     return data
 
 plan_df = load_data()
-print(plan_df)
 
 @st.cache_resource(show_spinner=False)
 def load_md_files(file_name="plan_df.csv"):
-    directory_path = str(data_path)
-    md_files = glob.glob((directory_path + '/*.md'))
-    md_files = [file.split("\\data\\")[1].split(".md")[0] for file in md_files]
-    
+    try:
+        directory_path = str(data_path)
+        md_files = glob.glob((directory_path + '/*.md'))
+        md_files = [file.split("\\data\\")[1].split(".md")[0] for file in md_files]
+    except:
+        # !pip install pyunpack patool #for streamlit
+        from pyunpack import Archive
+        Archive('pearl_ai_broker_mds.7z').extractall(".")
+        directory_path = str(data_path)
+        md_files = glob.glob((directory_path + '/*.md'))
+        md_files = [file.split("\\data\\")[1].split(".md")[0] for file in md_files]
     return md_files
 
 md_files = load_md_files()
