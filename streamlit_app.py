@@ -454,7 +454,6 @@ def summarize_message(messages, k = 4): #k=how many last conversations to keep #
 
                 Once I have this information, I'll be able to find the most suitable dental insurance plans for you and your family.
                 user: I am ok with paying more as long as the plan is comprehensive enough.
-                assistant: None
                 assistant: Based on your preferences, I have found a couple of dental insurance plans that may be suitable for you and your family:
 
                 1. Humana Dental Smart Choice - High (PPO):
@@ -601,25 +600,34 @@ if prompt := st.chat_input("Let's chat about affordable dental plans!"):
     # st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
-            
+
+    # Streamed response emulator: https://discuss.streamlit.io/t/markdown-rendering-issue-with-chat-streaming/52549/7 & https://docs.streamlit.io/develop/tutorials/llms/build-conversational-apps#build-a-chatgpt-like-app &
+    # https://docs.streamlit.io/develop/tutorials/llms/build-conversational-apps
+    def response_generator(assistant_response):
+        if "conversation_summary" not in assistant_response and assistant_response != None and assistant_response !="None" and assistant_response !="none":
+            for word in assistant_response.split():
+                yield word + " "
+                time.sleep(0.1)
+        
     with st.chat_message("assistant"):
         typing_indicator()
-        print(st.session_state.messages)
+        # print(st.session_state.messages)
         
         st.session_state.num_tokens, st.session_state.messages, assistant_response = generate_reply(prompt, st.session_state.messages, st.session_state.num_tokens)
+        response = st.write_stream(response_generator(assistant_response))
         message_placeholder = st.empty()
-        full_response = ""
+        # full_response = ""
         # Simulate stream of response with milliseconds delay
 
-        for chunk in assistant_response['content'].split():
-            if "conversation_summary" not in assistant_response and assistant_response != None and assistant_response !="None" and assistant_response !="none":
-                full_response += chunk + " "
-                time.sleep(0.1)
-                # Add a blinking cursor to simulate typing
-                message_placeholder.markdown(full_response + "▌")
-        message_placeholder.markdown(full_response)
+        # for chunk in assistant_response['content'].split():
+        #     if "conversation_summary" not in assistant_response and assistant_response != None and assistant_response !="None" and assistant_response !="none":
+        #         full_response += chunk + " "
+        #         time.sleep(0.1)
+        #         # Add a blinking cursor to simulate typing
+        #         message_placeholder.markdown(full_response + "▌")
+        # message_placeholder.markdown(full_response)
     # Add assistant response to chat history
-    # st.session_state.messages.append({"role": "assistant", "content": full_response})
+    st.session_state.messages.append({"role": "assistant", "content": response})
 # print(st.session_state)
 
 st.sidebar.write(f"""
