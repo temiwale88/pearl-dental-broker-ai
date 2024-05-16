@@ -605,6 +605,7 @@ if prompt := st.chat_input("Let's chat about affordable dental plans!"):
     # https://docs.streamlit.io/develop/tutorials/llms/build-conversational-apps
     def response_generator(assistant_response):
         if "conversation_summary" not in assistant_response and assistant_response != None and assistant_response !="None" and assistant_response !="none":
+            print("assistant_response:", assistant_response)
             for word in assistant_response.split():
                 yield word + " "
                 time.sleep(0.1)
@@ -615,7 +616,8 @@ if prompt := st.chat_input("Let's chat about affordable dental plans!"):
         
         st.session_state.num_tokens, st.session_state.messages, assistant_response = generate_reply(prompt, st.session_state.messages, st.session_state.num_tokens)
         response = st.write_stream(response_generator(assistant_response))
-        message_placeholder = st.empty()
+        print(response)
+        # message_placeholder = st.empty()
         # full_response = ""
         # Simulate stream of response with milliseconds delay
 
