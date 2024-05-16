@@ -605,8 +605,8 @@ if prompt := st.chat_input("Let's chat about affordable dental plans!"):
     # https://docs.streamlit.io/develop/tutorials/llms/build-conversational-apps
     def response_generator(assistant_response):
         if "conversation_summary" not in assistant_response and assistant_response != None and assistant_response !="None" and assistant_response !="none":
-            print("assistant_response:", assistant_response)
-            for word in assistant_response.split():
+            print("assistant_response:", assistant_response["content"])
+            for word in assistant_response["content"].split(" "):
                 yield word + " "
                 time.sleep(0.1)
         
