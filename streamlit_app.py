@@ -124,6 +124,7 @@ def create_contexts(df = plan_df, k=3, **kwargs):
         else:
             if value !=None: # expecting a list of columns from the string the LLM will pass in but the string could be NoneType
                 if isinstance(value, list):
+                    print(list)
                     additional_cols = ','.join(list).split(',') #being extra cautious here that our list really ends up being a list of separate columns not a comma separated string of cols
                 elif isinstance(value, str):
                     additional_cols = value.lower().split(',') 
