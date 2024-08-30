@@ -645,6 +645,17 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+#MainMenu {
+  visibility: hidden;
+}
+
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
 st.sidebar.write(f"""
     ### Description
     This application is a Generative AI proof-of-concept. It features an AI chatbot assistant that can intelligently hold long form conversations with dental insurance seekers. It is a more intelligent alternative (or add-on) to the traditional 'plan compare'-type experiences. **Note** that this is ***not production-grade*** but a simple deployment for a demonstration. So feel free to break it 😉
