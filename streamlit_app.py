@@ -632,6 +632,19 @@ if prompt := st.chat_input("Let's chat about affordable dental plans!"):
     st.session_state.messages.append({"role": "assistant", "content": response})
 # print(st.session_state)
 
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.sidebar.write(f"""
     ### Description
     This application is a Generative AI proof-of-concept. It features an AI chatbot assistant that can intelligently hold long form conversations with dental insurance seekers. It is a more intelligent alternative (or add-on) to the traditional 'plan compare'-type experiences. **Note** that this is ***not production-grade*** but a simple deployment for a demonstration. So feel free to break it 😉
