@@ -690,6 +690,6 @@ st.sidebar.write(f"""
 
     **How do I make something like this for my organization?**
 
-    Contact **Elijah Adeoye** via email [Elijah Adeoye](mailto:elijah.adeoye@weunveil.ai)
-    or [LinkedIn](https://www.linkedin.com/in/elijahaadeoye/)!
+    Contact **Iyanu Odebode** via email [Iyanu Odebode](mailto:iyanu@zeitios.com)
+    or [LinkedIn](https://www.linkedin.com/in/iyanuodebode/)!
     """)
